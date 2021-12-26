@@ -38,7 +38,17 @@ function DataShow(props) {
 
                         const date = data.lastUpdate.toLocaleString('en-US', { day: '2-digit' });
                         // convert 2021-1-10 --> 2021-01-10
-                        const month = (data.lastUpdate.getMonth()) < 10 ? '0' + (data.lastUpdate.getMonth()) : '' + (data.lastUpdate.getMonth());
+                        const month = (data.lastUpdate.getMonth()) < 10 ? '0' + String(data.lastUpdate.getMonth()) : '' + String(data.lastUpdate.getMonth());
+                    /* few note: 
+                            - reference -> https://stackoverflow.com/questions/3945202/whats-the-difference-between-stringvalue-vs-value-tostring
+                            String(value) ??? or value.toString() ??? 
+                            - example use null as value to convert
+                                const data = null;
+                               String(data) ==> 'null'
+                               data.toString() ==> undefined
+
+
+                    */
                         const year = data.lastUpdate.getFullYear();
                         
                         console.log(`okayyy ${year}-${month}-${date}`, '---', filteredDate)
